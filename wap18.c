@@ -1,21 +1,26 @@
-// EMI Calculator program in C 
-#include <math.h> 
 #include <stdio.h>
-float main()
+#include <math.h>
+ 
+int main() 
 {
-float p,t;
-float emi,r,x,z,y;
-printf("enter the values of p,r,t \n");
-scanf("%f%f%f",&p,&t,&r);
-x=t*12;
-y=r/(100*12);
-z=pow((1+y),x);
-emi=(p*y*z)/(z-1);
-printf("x=%f \n",x); 
-printf("y=%f \n",y); 
-printf("z=%f \n",z);
-printf("emi=%f \n",emi);
-} 
-  
-
-
+    float principal, rate, time, emi;
+ 
+    printf("Enter principal: ");
+    scanf("%f",&principal);
+ 
+    printf("Enter rate: ");
+    scanf("%f",&rate);
+ 
+    printf("Enter time in year: ");
+    scanf("%f",&time);
+ 
+    rate=rate/(12*100); /*one month interest*/
+    time=time*12; /*one month period*/
+ 
+ 
+    emi= (principal*rate*pow(1+rate,time))/(pow(1+rate,time)-1);
+ 
+    printf("Monthly EMI is= %f\n",emi);
+     
+    return 0;
+}
